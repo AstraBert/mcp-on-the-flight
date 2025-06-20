@@ -21,7 +21,7 @@ EXTRACT_AGENT = CONN.get_agent(id=os.getenv("EXTRACT_AGENT_ID"))
 CLIENT = LlamaCloud(token=os.getenv("LLAMACLOUD_API_KEY"))
 CRAWLER = BeautifulSoupCrawler()
 INDEX = LlamaCloudIndex(
-    index_id="94fe89bb-0e15-4ef7-9d96-ec1128bfe416",
+    index_id=os.getenv("LLAMACLOUD_PIPELINE_ID"),
     api_key=os.getenv("LLAMACLOUD_API_KEY"),
 )
 QE = INDEX.as_query_engine()
