@@ -5,9 +5,24 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+  "crawlee[beautifulsoup]>=0.6.10",
+  "duckduckgo-search>=8.0.4",
   "fastmcp>=2.8.1",
+  "gradio>=5.34.2",
+  "html2text>=2025.4.15",
   "llama-cloud-services>=0.6.34",
   "llama-index-core>=0.12.43",
+  "llama-index-embeddings-openai>=0.3.1",
+  "llama-index-indices-managed-llama-cloud>=0.7.7",
+  "llama-index-llms-openai>=0.4.7",
   "llama-index-tools-mcp>=0.2.5",
-  "pre-commit>=4.2.0"
+  "markdown-pdf>=1.7",
+  "pre-commit>=4.2.0",
+  "pydantic>=2.11.7",
+  "pytest>=8.4.1",
+  "pytest-asyncio>=1.0.0",
+  "websockets>=15.0.1"
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

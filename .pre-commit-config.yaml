@@ -53,7 +53,7 @@ repos:
       - id: black-jupyter
         name: black-docs-py
         alias: black
-        files: ^(src/mcp_on_the_flight/|tests/)
+        files: ^(README.md|CONTRIBUTING.md)
         # Using PEP 8's line length in docs prevents excess left/right scrolling
         args: [--line-length=79]
 
