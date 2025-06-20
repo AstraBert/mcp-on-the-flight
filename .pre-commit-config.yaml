@@ -45,7 +45,7 @@ repos:
             --ignore-missing-imports,
             --python-version=3.9,
           ]
-        entry: bash -c "export MYPYPATH=."
+        entry: bash -c "export MYPYPATH=src/mcp_on_the_flight"
 
   - repo: https://github.com/psf/black-pre-commit-mirror
     rev: 23.10.1

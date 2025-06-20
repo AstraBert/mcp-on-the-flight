@@ -17,12 +17,16 @@ dependencies = [
   "llama-index-llms-openai>=0.4.7",
   "llama-index-tools-mcp>=0.2.5",
   "markdown-pdf>=1.7",
+  "mypy>=1.16.1",
   "pre-commit>=4.2.0",
   "pydantic>=2.11.7",
   "pytest>=8.4.1",
   "pytest-asyncio>=1.0.0",
   "websockets>=15.0.1"
 ]
+
+[tool.mypy]
+disable_error_code = ["import-not-found", "import-untyped"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

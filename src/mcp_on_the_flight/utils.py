@@ -36,7 +36,7 @@ async def extract_ticket_info(plane_ticket: os.PathLike[str]) -> str:
 @CRAWLER.router.default_handler
 async def request_handler(context: BeautifulSoupCrawlingContext) -> None:
     context.log.info(f"Processing {context.request.url} ...")
-    html_content = context.soup.prettify()
+    html_content = str(context.soup.prettify())
     md_content = html2text.html2text(html_content)
     if md_content:
         with open("data/last_researched_company.md", "w") as tf:
@@ -70,11 +70,12 @@ async def set_processed_companies_resource(company: str) -> None:
         json.dump(data, f)
 
 
-async def search_for_company_policies(company: str):
-    results = SEARCH_CLIENT.text(keywords=f"{company} company policies", max_results=2)
-    urls_to_scrape = [r["url"] for r in results]
+async def search_for_company_policies(company: str) -> List[str]:
+    results = SEARCH_CLIENT.text(keywords=f"{company} flight policies", max_results=2)
+    urls_to_scrape = [r["href"] for r in results]
     await CRAWLER.run(requests=urls_to_scrape)
     await set_processed_companies_resource(company=company)
+    return urls_to_scrape
 
 
 def assistant_index(question: str):
