@@ -36,7 +36,7 @@ async def extract_ticket_info(plane_ticket: os.PathLike[str]) -> str:
 @CRAWLER.router.default_handler
 async def request_handler(context: BeautifulSoupCrawlingContext) -> None:
     context.log.info(f"Processing {context.request.url} ...")
-    html_content = context.soup.prettify()
+    html_content = str(context.soup.prettify())
     md_content = html2text.html2text(html_content)
     if md_content:
         with open("data/last_researched_company.md", "w") as tf:
