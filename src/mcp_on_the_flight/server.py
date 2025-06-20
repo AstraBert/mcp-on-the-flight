@@ -2,6 +2,7 @@
 
 import os
 from dotenv import load_dotenv
+import asyncio
 
 from fastmcp import FastMCP
 from utils import (
@@ -23,9 +24,13 @@ llm_struct = llm.as_structured_llm(CompanyPolicies)
 @mcp.tool(
     name="extract_ticket_info", description="Extract information from a plane ticket"
 )
-async def extract_tiket_info_tool(plane_ticket: os.PathLike[str]) -> str:
+async def extract_ticket_info_tool(plane_ticket: os.PathLike[str]) -> str:
     plane_ticket = str(plane_ticket)
-    response = await extract_ticket_info(plane_ticket=plane_ticket)
+    response = await asyncio.wait_for(
+        extract_ticket_info(plane_ticket=plane_ticket),
+        timeout=200,
+    )
+    await asyncio.sleep(1)
     return response
 
 

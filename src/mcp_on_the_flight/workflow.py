@@ -8,7 +8,7 @@ from workflows.resource import Resource
 from llama_index.tools.mcp import BasicMCPClient
 from models import PlaneTicket, CompanyPolicies
 
-MCP_CLIENT = BasicMCPClient(command_or_url="http://localhost:8000/mcp")
+MCP_CLIENT = BasicMCPClient(command_or_url="http://localhost:8000/mcp", timeout=200)
 
 
 def get_mcp_client(*args, **kwargs) -> BasicMCPClient:
@@ -68,4 +68,4 @@ class PlaneTicketWorkflow(Workflow):
             )
 
 
-workflow = PlaneTicketWorkflow()
+workflow = PlaneTicketWorkflow(timeout=200)
