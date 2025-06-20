@@ -50,7 +50,7 @@ async def search_for_company_policies_tool(company: str) -> str:
                 role="user", content="Can you summarize these policies for me?"
             ),
         ]
-        resp = await llm.achat(messages)
+        resp = await llm_struct.achat(messages)
         return resp.message.blocks[0].text
     else:
         return f"The policies for {company} are already in our database, you can directly refer any question to out Q&A assistant!"

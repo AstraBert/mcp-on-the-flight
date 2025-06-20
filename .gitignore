@@ -16,3 +16,7 @@ wheels/
 
 # caches
 storage/
+
+# pdf files for indexing
+data/index/*-*.pdf
+data/last_*.md

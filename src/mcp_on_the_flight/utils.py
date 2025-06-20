@@ -70,11 +70,12 @@ async def set_processed_companies_resource(company: str) -> None:
         json.dump(data, f)
 
 
-async def search_for_company_policies(company: str):
-    results = SEARCH_CLIENT.text(keywords=f"{company} company policies", max_results=2)
-    urls_to_scrape = [r["url"] for r in results]
+async def search_for_company_policies(company: str) -> List[str]:
+    results = SEARCH_CLIENT.text(keywords=f"{company} flight policies", max_results=2)
+    urls_to_scrape = [r["href"] for r in results]
     await CRAWLER.run(requests=urls_to_scrape)
     await set_processed_companies_resource(company=company)
+    return urls_to_scrape
 
 
 def assistant_index(question: str):
