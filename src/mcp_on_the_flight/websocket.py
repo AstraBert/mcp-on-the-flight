@@ -18,7 +18,7 @@ async def run_workflow(websocket):
                 for k, v in event.extra_information.items():
                     extra_info += f"- {k.capitalize()}: {v}\n"
                 await websocket.send(
-                    f"Your departure date is: **{event.depature_time}** and landing date is: **{event.landing_time}**. Your flight number (might be useful for tracking) is: *{event.flight_number}*. You are seating at: **{event.seat_number}**. Extra information (if any):\n{extra_info}"
+                    f"Your departure date is: **{event.depature_time}** and landing date is: **{event.landing_time}**.\n\nYour flight number (might be useful for tracking) is: *{event.flight_number}*.\n\nYou are seating at: **{event.seat_number}**.\n\nExtra information (if any):\n{extra_info}\n\n"
                 )
             elif isinstance(event, CompanyPoliciesEvent):
                 smoking_allowed = "" if event.smoking_allowed else "not"

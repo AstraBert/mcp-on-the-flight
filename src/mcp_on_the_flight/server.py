@@ -21,12 +21,12 @@ llm_struct = llm.as_structured_llm(CompanyPolicies)
 
 
 @mcp.tool(
-    name="extract_ticket_info",
-    description="Extract information from a plane ticket",
+    name="extract_ticket_info", description="Extract information from a plane ticket"
 )
 async def extract_tiket_info_tool(plane_ticket: os.PathLike[str]) -> str:
     plane_ticket = str(plane_ticket)
-    return await extract_ticket_info(plane_ticket=plane_ticket)
+    response = await extract_ticket_info(plane_ticket=plane_ticket)
+    return response
 
 
 @mcp.tool(
